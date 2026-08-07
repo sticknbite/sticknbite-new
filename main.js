@@ -63,10 +63,22 @@ if (quoteForm) {
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    const data = Object.fromEntries(new FormData(quoteForm));
+    const form = Object.fromEntries(new FormData(quoteForm));
+    const params = new URLSearchParams(window.location.search);
+    const data = {
+      ...form,
+      name: `${form.firstName || ''} ${form.lastName || ''}`.trim(),
+      guests: form.guestCount || '',
+      barCatering: form.barInterest ? 'Yes, please' : 'No',
+      timestamp: new Date().toISOString(),
+      page_url: window.location.href,
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || ''
+    };
 
     try {
-      await fetch('https://hook.us1.make.com/8x6i8jk6991n9uhwrmcuwmy1w5t9fq2t', {
+      await fetch('https://hook.us2.make.com/qckfhoei6utvr1ps1pp7fv7qhw95bb6v', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
