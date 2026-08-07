@@ -13,8 +13,6 @@
   --green-light:  #C0402E;
   --gold:         #C0402E;
   --gold-light:   #D9583F;
-  --yellow:       #F2B705;
-  --yellow-light: #F5C736;
   --accent-soft:  #ED9C82;
   --slate:        #3B4E5C;
   --cream:        #FDF8F0;
@@ -109,15 +107,15 @@ p  { font-size: 1rem; color: var(--gray-dark); }
   white-space: nowrap;
 }
 .btn-primary {
-  background: var(--yellow);
-  color: var(--charcoal);
-  border-color: var(--yellow);
+  background: var(--gold);
+  color: var(--white);
+  border-color: var(--gold);
 }
 .btn-primary:hover {
-  background: var(--yellow-light);
-  border-color: var(--yellow-light);
+  background: var(--gold-light);
+  border-color: var(--gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(242,183,5,0.35);
+  box-shadow: 0 6px 20px rgba(192,64,46,0.35);
 }
 .btn-outline {
   background: transparent;
