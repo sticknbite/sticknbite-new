@@ -958,6 +958,9 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
 /* === MOBILE STICKY CTA BAR === */
 .mobile-cta-bar { display: none; }
 
+/* Anchor targets clear the fixed nav when jumped to */
+#faq, #quoteForm { scroll-margin-top: calc(var(--nav-h) + 20px); }
+
 /* === ADD-ONS === */
 .addons {
   display: grid;
