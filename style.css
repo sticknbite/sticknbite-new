@@ -863,7 +863,7 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
   content: '';
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1920&q=30') center/cover;
+  background: url('images/hero.jpg') center/cover;
   opacity: 0.08;
 }
 .cta-section .container { position: relative; z-index: 1; }
