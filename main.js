@@ -93,6 +93,73 @@ if (quoteForm) {
   });
 }
 
+/* --- Gallery: category filter + lightbox --- */
+const galleryGrid = document.getElementById('galleryGrid');
+if (galleryGrid) {
+  const items    = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
+  const emptyMsg = document.getElementById('galleryEmpty');
+  const lb       = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lbImg');
+  const lbCap    = document.getElementById('lbCaption');
+  const lbCount  = document.getElementById('lbCount');
+  let shown = items.slice();
+  let index = 0;
+  let lastFocused = null;
+
+  /* Filtering */
+  document.querySelectorAll('.gallery-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.filter;
+      document.querySelectorAll('.gallery-filter').forEach(b => b.classList.toggle('active', b === btn));
+      items.forEach(el => {
+        el.classList.toggle('is-hidden', cat !== 'all' && el.dataset.category !== cat);
+      });
+      shown = items.filter(el => !el.classList.contains('is-hidden'));
+      emptyMsg.hidden = shown.length > 0;
+    });
+  });
+
+  /* Lightbox */
+  const render = () => {
+    const el = shown[index];
+    lbImg.src = el.dataset.full;
+    lbImg.alt = el.querySelector('img').alt;
+    lbCap.textContent = el.dataset.caption || '';
+    lbCount.textContent = (index + 1) + ' / ' + shown.length;
+  };
+  const open = (el) => {
+    index = shown.indexOf(el);
+    if (index < 0) return;
+    lastFocused = document.activeElement;
+    render();
+    lb.classList.add('open');
+    document.body.classList.add('lightbox-open');
+    document.getElementById('lbClose').focus();
+  };
+  const close = () => {
+    lb.classList.remove('open');
+    document.body.classList.remove('lightbox-open');
+    lbImg.src = '';
+    if (lastFocused) lastFocused.focus();
+  };
+  const step = (n) => {
+    index = (index + n + shown.length) % shown.length;
+    render();
+  };
+
+  items.forEach(el => el.addEventListener('click', () => open(el)));
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+  document.getElementById('lbNext').addEventListener('click', () => step(1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+}
+
 /* --- Smooth fade-in on scroll --- */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

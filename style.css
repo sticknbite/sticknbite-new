@@ -943,6 +943,120 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
 }
 .ig-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220,39,67,0.3); }
 
+/* === GALLERY === */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.gallery-filter {
+  padding: 9px 22px;
+  border-radius: 100px;
+  border: 1px solid var(--cream-dark);
+  background: var(--white);
+  color: var(--gray-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.gallery-filter:hover { border-color: var(--gold); color: var(--gold); }
+.gallery-filter.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+.gallery-grid { columns: 3; column-gap: 18px; }
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 18px;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: zoom-in;
+  box-shadow: var(--shadow-sm);
+}
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item-label {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 26px 16px 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: left;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.gallery-item:hover .gallery-item-label,
+.gallery-item:focus-visible .gallery-item-label { opacity: 1; }
+.gallery-item.is-hidden { display: none; }
+.gallery-empty { text-align: center; color: var(--gray); padding: 40px 0; }
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(17,24,39,0.94);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.lightbox.open { display: flex; }
+.lightbox-figure { margin: 0; max-width: 100%; max-height: 100%; text-align: center; }
+.lightbox-img {
+  max-width: min(1100px, 92vw);
+  max-height: 78vh;
+  width: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.lightbox-caption {
+  color: var(--white);
+  font-size: 0.95rem;
+  margin-top: 16px;
+  font-weight: 500;
+}
+.lightbox-count { color: rgba(255,255,255,0.55); font-size: 0.8rem; margin-top: 4px; }
+.lightbox-btn {
+  position: absolute;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: var(--white);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+.lightbox-btn:hover { background: rgba(255,255,255,0.28); }
+.lightbox-close { top: 20px; right: 20px; font-size: 1.7rem; }
+.lightbox-prev  { left: 20px;  top: 50%; transform: translateY(-50%); }
+.lightbox-next  { right: 20px; top: 50%; transform: translateY(-50%); }
+body.lightbox-open { overflow: hidden; }
+
 /* === UTILS === */
 .text-center { text-align: center; }
 .text-white  { color: var(--white) !important; }
@@ -971,6 +1085,10 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
   .about-story-img img { height: 360px; }
 }
 
+@media (max-width: 900px) {
+  .gallery-grid { columns: 2; }
+}
+
 @media (max-width: 768px) {
   :root { --nav-h: 64px; }
   .section    { padding: 64px 0; }
@@ -997,6 +1115,12 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
 @media (max-width: 480px) {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.6rem; }
+  .gallery-grid    { column-gap: 10px; }
+  .gallery-item    { margin-bottom: 10px; }
+  .gallery-filters { gap: 8px; }
+  .gallery-filter  { padding: 8px 16px; font-size: 0.8rem; }
+  .lightbox-prev   { left: 8px; }
+  .lightbox-next   { right: 8px; }
   .hero-btns  { flex-direction: column; }
   .cta-btns   { flex-direction: column; align-items: center; }
   .stats-row  { grid-template-columns: 1fr; }
