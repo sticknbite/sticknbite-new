@@ -42,7 +42,7 @@ document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(link => {
   }
 });
 
-/* --- Pre-select package from URL (?package=Basic|Classic|Premium) --- */
+/* --- Pre-select package from URL (?package=Essential|Classic|Premium) --- */
 const packageSelect = document.getElementById('package');
 if (packageSelect) {
   const wanted = new URLSearchParams(window.location.search).get('package');
