@@ -482,15 +482,16 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
 /* === PRICING / PACKAGES === */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  /* minmax(0,…) so a long CTA can't widen its own column */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
   align-items: stretch;
 }
 .price-card {
   background: var(--white);
   border: 1px solid var(--cream-dark);
   border-radius: var(--radius-lg);
-  padding: 40px 30px;
+  padding: 36px 24px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -1185,6 +1186,7 @@ body.lightbox-open { overflow: hidden; }
 
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
+  .pricing-grid       { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .why-grid           { grid-template-columns: 1fr; }
   .menu-preview-grid  { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid  { grid-template-columns: 1fr; gap: 16px; }
@@ -1212,6 +1214,7 @@ body.lightbox-open { overflow: hidden; }
   .features-strip-inner { grid-template-columns: 1fr; }
   .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .feature-item:last-child { border-bottom: none; }
+  .pricing-grid       { grid-template-columns: 1fr; }
   .menu-preview-grid  { grid-template-columns: 1fr; }
   .menu-items-grid    { grid-template-columns: 1fr; }
   .package-includes   { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
