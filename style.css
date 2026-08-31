@@ -1029,6 +1029,14 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
   margin-bottom: 10px;
 }
 .package-includes-col p { font-size: 0.925rem; margin: 0; }
+.package-includes-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--cream-dark);
+  font-size: 0.875rem;
+  color: var(--gray);
+}
 
 /* === PROOF STRIP === */
 .proof-strip {
