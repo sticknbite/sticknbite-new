@@ -1027,6 +1027,12 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
 .dropoff-body .display-tag { display: block; margin-bottom: 8px; }
 .dropoff-body h3 { color: var(--green-dark); margin-bottom: 8px; }
 .dropoff-body > p { font-size: 0.925rem; margin-bottom: 18px; }
+.dropoff-body .dropoff-lead {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
 .dropoff-facts {
   display: flex;
   flex-wrap: wrap;
