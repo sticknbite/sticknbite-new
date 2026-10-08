@@ -1042,6 +1042,14 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
   color: var(--gray-dark);
 }
 .dropoff-facts strong { color: var(--green-dark); }
+.dropoff-excluded {
+  font-size: 0.875rem;
+  color: var(--gray-dark);
+  margin: 0 0 22px;
+  padding-left: 14px;
+  border-left: 3px solid var(--cream-dark);
+}
+.dropoff-excluded strong { color: var(--green-dark); }
 .dropoff-note {
   margin: 14px 0 0;
   font-size: 0.8rem;
