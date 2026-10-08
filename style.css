@@ -960,7 +960,7 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
 .mobile-cta-bar { display: none; }
 
 /* Anchor targets clear the fixed nav when jumped to */
-#faq, #quoteForm { scroll-margin-top: calc(var(--nav-h) + 20px); }
+#faq, #quoteForm, #dropoff { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
 /* === ADD-ONS === */
 .addons {
@@ -1004,6 +1004,28 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
   font-weight: 700;
   flex-shrink: 0;
 }
+
+/* === DROP-OFF BANNER (homepage) === */
+.dropoff-banner {
+  background: var(--cream);
+  border-top: 1px solid var(--cream-dark);
+  border-bottom: 1px solid var(--cream-dark);
+  padding: 22px 0;
+}
+.dropoff-banner .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+}
+.dropoff-banner p {
+  margin: 0;
+  font-size: 0.95rem;
+  max-width: 620px;
+}
+.dropoff-banner strong { color: var(--green-dark); }
+.dropoff-banner .btn { white-space: nowrap; flex-shrink: 0; }
 
 /* === DROP-OFF CATERING === */
 .dropoff {
