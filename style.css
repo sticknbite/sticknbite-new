@@ -960,7 +960,7 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
 .mobile-cta-bar { display: none; }
 
 /* Anchor targets clear the fixed nav when jumped to */
-#faq, #quoteForm, #dropoff { scroll-margin-top: calc(var(--nav-h) + 20px); }
+#faq, #quoteFormSection, #dropoff { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
 /* === ADD-ONS === */
 .addons {
@@ -1004,6 +1004,11 @@ svg.ico-b{ display:inline-block; vertical-align:middle; fill:currentColor; }
   font-weight: 700;
   flex-shrink: 0;
 }
+
+/* HoneyBook embed fills the card it sits in.
+   The widget script sets the iframe to width/height 90%, so override it. */
+.quote-form [class^="hb-p-"] { width: 100%; }
+.quote-form [class^="hb-p-"] iframe { width: 100% !important; display: block; border: 0; }
 
 /* === DROP-OFF BANNER (homepage) === */
 .dropoff-banner {

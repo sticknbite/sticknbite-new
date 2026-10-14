@@ -54,45 +54,6 @@ if (packageSelect) {
   }
 }
 
-/* --- Quote form submission (Make.com webhook) --- */
-const quoteForm = document.getElementById('quoteForm');
-if (quoteForm) {
-  quoteForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = quoteForm.querySelector('.form-submit');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-
-    const form = Object.fromEntries(new FormData(quoteForm));
-    const params = new URLSearchParams(window.location.search);
-    const data = {
-      ...form,
-      name: `${form.firstName || ''} ${form.lastName || ''}`.trim(),
-      guests: form.guestCount || '',
-      barCatering: form.barInterest ? 'Yes, please' : 'No',
-      timestamp: new Date().toISOString(),
-      page_url: window.location.href,
-      utm_source: params.get('utm_source') || '',
-      utm_medium: params.get('utm_medium') || '',
-      utm_campaign: params.get('utm_campaign') || ''
-    };
-
-    try {
-      await fetch('https://hook.us2.make.com/qckfhoei6utvr1ps1pp7fv7qhw95bb6v', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      quoteForm.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    } catch {
-      btn.textContent = 'Request Your Quote →';
-      btn.disabled = false;
-      alert('Something went wrong. Please email us at contact@sticknbite.com');
-    }
-  });
-}
-
 /* --- Gallery: category filter + lightbox --- */
 const galleryGrid = document.getElementById('galleryGrid');
 if (galleryGrid) {
