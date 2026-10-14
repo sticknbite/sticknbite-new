@@ -42,18 +42,6 @@ document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(link => {
   }
 });
 
-/* --- Pre-select package from URL (?package=Essential|Classic|Premium) --- */
-const packageSelect = document.getElementById('package');
-if (packageSelect) {
-  const wanted = new URLSearchParams(window.location.search).get('package');
-  if (wanted) {
-    const match = Array.from(packageSelect.options).find(opt =>
-      opt.text.toLowerCase().startsWith(wanted.toLowerCase())
-    );
-    if (match) match.selected = true;
-  }
-}
-
 /* --- Gallery: category filter + lightbox --- */
 const galleryGrid = document.getElementById('galleryGrid');
 if (galleryGrid) {
